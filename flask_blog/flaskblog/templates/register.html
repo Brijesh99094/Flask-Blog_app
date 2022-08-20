@@ -1,0 +1,45 @@
+{% extends 'layout.html' %} {% block content %}
+<h1>Registration</h1>
+<div class="content-section">
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.username.label()}} {{ form.username()}} <br />
+      {% for error in form.username.errors %}
+      <span style="color: red"> {{form.username.label()}} {{ error }} </span> {%
+      endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.email.label()}} 
+      {{ form.email()}}
+       {% for error in form.email.errors %}
+      <span style="color: red"> {{ error }} </span> {% endfor %}
+      </div>
+    
+    </div>
+
+    <div class="form-group">
+      {{ form.password.label()}} 
+       {{ form.password()}}
+      {% for error in form.password.errors %}
+      <span style="color: red"> {{ error }} </span> {% endfor %}
+     
+    </div>
+
+    <div class="form-group">
+      {{ form.password_confirm.label()}} 
+      {{ form.password_confirm()}}
+        {% for error in form.password_confirm.errors %}
+      <span style="color: red"> {{ error }} </span> {% endfor %}
+    
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+<div>Already have an account <a href="{{ url_for('login') }}">Login</a></div>
+{% endblock content %}
